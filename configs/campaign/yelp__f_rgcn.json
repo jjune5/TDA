@@ -61,5 +61,16 @@
     "epochs": 100,
     "lr": 0.005,
     "weight_decay": 0.001
-  }
+  },
+  "rgcn": {
+    "hidden_dim": 64,
+    "num_layers": 2,
+    "num_bases": null,
+    "lr": 0.01,
+    "weight_decay": 0.0005,
+    "dropout": 0.5,
+    "epochs": 100
+  },
+  "backbone": "rgcn",
+  "topology_source": "gtn"
 }

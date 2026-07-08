@@ -15,11 +15,19 @@ from __future__ import annotations
 
 import argparse
 import copy
+import functools
 import os
 from typing import Dict, List, Optional, Tuple
 
 import torch
 import torch.nn.functional as F
+
+# PyTorch >= 2.6 changed torch.load default to weights_only=True,
+# which breaks torch_geometric dataset loading. Patch to restore prior behavior.
+if not getattr(torch.load, '_compat_patched', False):
+    _orig_torch_load = torch.load
+    torch.load = functools.partial(_orig_torch_load, weights_only=False)
+    torch.load._compat_patched = True
 
 from tda.data import get_dataset
 from tda.models.fusion import SemanticAttentionFusion

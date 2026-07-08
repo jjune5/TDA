@@ -1,37 +1,55 @@
 {
-  "dataset": "yelp",
-  "use_topology": true,
+  "dataset": "aifb",
+  "use_topology": false,
   "fusion": "attention",
   "seed": 0,
-  "max_target_nodes": 6000,
   "base_relations": {
-    "BLB": [
+    "r0": [
       [
-        "t0",
+        "entity",
         "r0",
-        "t1"
-      ],
-      [
-        "t1",
-        "r0",
-        "t0"
+        "entity"
       ]
     ],
-    "BSB": [
+    "r1": [
       [
-        "t0",
+        "entity",
         "r1",
-        "t2"
-      ],
+        "entity"
+      ]
+    ],
+    "r2": [
       [
-        "t2",
-        "r1",
-        "t0"
+        "entity",
+        "r2",
+        "entity"
+      ]
+    ],
+    "r3": [
+      [
+        "entity",
+        "r3",
+        "entity"
+      ]
+    ],
+    "r4": [
+      [
+        "entity",
+        "r4",
+        "entity"
+      ]
+    ],
+    "r5": [
+      [
+        "entity",
+        "r5",
+        "entity"
       ]
     ]
   },
   "han_metapaths": [
-    "BLB"
+    "r0",
+    "r1"
   ],
   "gtn": {
     "num_channels": 4,
@@ -61,5 +79,15 @@
     "epochs": 100,
     "lr": 0.005,
     "weight_decay": 0.001
-  }
+  },
+  "rgcn": {
+    "hidden_dim": 64,
+    "num_layers": 2,
+    "num_bases": null,
+    "lr": 0.01,
+    "weight_decay": 0.0005,
+    "dropout": 0.5,
+    "epochs": 100
+  },
+  "backbone": "rgcn"
 }

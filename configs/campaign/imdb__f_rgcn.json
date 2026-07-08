@@ -1,37 +1,49 @@
 {
-  "dataset": "yelp",
+  "dataset": "imdb",
   "use_topology": true,
   "fusion": "attention",
   "seed": 0,
-  "max_target_nodes": 6000,
   "base_relations": {
-    "BLB": [
+    "MDM": [
       [
-        "t0",
-        "r0",
-        "t1"
+        "movie",
+        "to",
+        "director"
       ],
       [
-        "t1",
-        "r0",
-        "t0"
+        "director",
+        "to",
+        "movie"
       ]
     ],
-    "BSB": [
+    "MAM": [
       [
-        "t0",
-        "r1",
-        "t2"
+        "movie",
+        ">actorh",
+        "actor"
       ],
       [
-        "t2",
-        "r1",
-        "t0"
+        "actor",
+        "to",
+        "movie"
+      ]
+    ],
+    "MKM": [
+      [
+        "movie",
+        "to",
+        "keyword"
+      ],
+      [
+        "keyword",
+        "to",
+        "movie"
       ]
     ]
   },
   "han_metapaths": [
-    "BLB"
+    "MDM",
+    "MAM"
   ],
   "gtn": {
     "num_channels": 4,
@@ -61,5 +73,16 @@
     "epochs": 100,
     "lr": 0.005,
     "weight_decay": 0.001
-  }
+  },
+  "rgcn": {
+    "hidden_dim": 64,
+    "num_layers": 2,
+    "num_bases": null,
+    "lr": 0.01,
+    "weight_decay": 0.0005,
+    "dropout": 0.5,
+    "epochs": 100
+  },
+  "backbone": "rgcn",
+  "topology_source": "gtn"
 }
