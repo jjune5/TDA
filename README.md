@@ -194,5 +194,3 @@ python experiments/agg_gated.py               # factorial 표
 python experiments/agg_lp.py                  # LP 표
 python experiments/paired_stats2.py           # paired Wilcoxon 검정
 ```
-
-> dblp의 HAN 결과는 metapath 목록에 venue를 포함한 것 (`configs/dblp.json`의 `han_metapaths`를 `["APA","APTPA","APVPA"]`로 교체 후 실행).
